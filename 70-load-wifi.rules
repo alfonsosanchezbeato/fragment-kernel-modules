@@ -1,0 +1,2 @@
+# Force loading with random event
+ACTION=="add", SUBSYSTEM=="rtc", KERNEL=="rtc*", RUN{builtin}+="kmod load mac80211_hwsim"

@@ -1,0 +1,17 @@
+[Unit]
+Description=Mount fragment xxx
+DefaultDependencies=no
+After=systemd-remount-fs.service
+Before=systemd-udevd.service
+Before=umount.target
+Conflicts=umount.target
+
+[Mount]
+What=/run/mnt/data/system-data/var/lib/snapd/snaps/xxx+kmod.frag
+Where=/snap/xxx/frags/kmod
+Type=squashfs
+Options=nodev,ro,x-gdu.hide,x-gvfs-hide
+LazyUnmount=yes
+
+[Install]
+WantedBy=sysinit.target

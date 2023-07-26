@@ -1,0 +1,18 @@
+[Unit]
+Description=Mount modules for fragment xxx
+DefaultDependencies=no
+After=systemd-remount-fs.service
+After=snap-xxx-frags-kmod.mount
+Before=systemd-udevd.service
+Before=umount.target
+Conflicts=umount.target
+
+[Mount]
+What=/snap/xxx/frags/kmod/lib/firmware
+Where=/usr/lib/firmware/updates/5.15.0-78-generic
+Type=none
+Options=bind
+LazyUnmount=yes
+
+[Install]
+WantedBy=sysinit.target
